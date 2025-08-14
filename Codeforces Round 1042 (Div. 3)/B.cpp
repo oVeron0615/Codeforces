@@ -7,7 +7,17 @@ typedef pair<ll, ll> pll;
 
 void solve()
 {
-
+    int n; cin >> n;
+    for(int i=1; i<=n; i++)
+    {
+        if(i % 2) cout << -1 << " ";
+        else
+        {
+            if(i == n) cout << 2 << " ";
+            else cout << 3 << " ";
+        }
+    }
+    cout << "\n";
 }
 
 int main()
