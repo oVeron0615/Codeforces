@@ -1,0 +1,31 @@
+#include <bits/stdc++.h>
+using namespace std;
+
+typedef long long ll;
+typedef pair<int, int> pii;
+typedef pair<ll, ll> pll;
+
+void solve()
+{
+    int n; cin >> n;
+    vector<ll> g;
+    for(int i=1; i<=n; i++)
+    {
+        ll gi; cin >> gi;
+        g.push_back(gi);
+    }
+    sort(g.begin(), g.end(), greater<ll>());
+
+    ll ans = 0;
+    for(int i=0; i<g.size(); i+=2) ans += g[i];
+    cout << ans << "\n";
+}
+
+int main()
+{
+	ios::sync_with_stdio(0);
+	cin.tie(0), cout.tie(0);
+
+    int T; cin >> T;
+    while(T--) solve();
+}
