@@ -5,8 +5,6 @@ typedef long long ll;
 typedef pair<int, int> pii;
 typedef pair<ll, ll> pll;
 
-
-
 void solve()
 {
     int n; cin >> n;
