@@ -18,40 +18,38 @@ void solve()
 
     for(int i=1; i<=31; i++)
     {
-        ll f = 1;
+        score[i] = i;
         for(int j=1; j<i; j++)
-            f = f * score[j] % MOD;
-        score[i] = (score[i-1] * score[i-1] % MOD + f) % MOD;
+            score[i] = score[i] * score[j] % MOD;
     }
 
     ll ans = 1;
-    int idx = 1;
-    while(idx <= n && s[idx] <= 31)
+    for(int i=1; i<=n; i++)
     {
-        if(k >= (1 << (s[idx] - 1)))
+        if(s[i] <= 31 && k >= (1 << (s[i] - 1)))
         {
-            k -= (1 << (s[idx] - 1));
-            ans = ans * score[s[idx]] % MOD;
+            k -= (1 << (s[i] - 1));
+            ans = ans * score[s[i]] % MOD;
         }
-        else break;
-        idx++;
-    }
-
-    ll last = s[idx];
-    while(k)
-    {
-        k--;
-        ans = ans * last % MOD;
-
-        ll num = 1;
-        while(k >= (1 << (num - 1)))
+        else
         {
-            k -= (1 << (num - 1));
-            ans = ans * score[num] % MOD;
-            num++;
-        }
+            ll last = s[i];
+            while(k)
+            {
+                k--;
+                ans = ans * last % MOD;
 
-        last = num;
+                ll num = 1;
+                while(k >= (1 << (num - 1)))
+                {
+                    k -= (1 << (num - 1));
+                    ans = ans * score[num] % MOD;
+                    num++;
+                }
+                last = num;
+            }
+            break;
+        }
     }
     cout << ans << "\n";
 }
